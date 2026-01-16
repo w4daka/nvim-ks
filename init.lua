@@ -69,40 +69,6 @@ Kickstart Guide:
   I have left several `:help X` comments throughout the init.lua
     These are hints about where to find more information about the relevant settings,
     plugins or Neovim features used in Kickstart.
-  日本語
-  Kickstartとは何か？
-  Kickstart.nvimは「配布版（ディストリビューション）」ではありません。
-
-  Kickstart.nvimは、あなた自身の設定を作るための出発点です。 その目的は、コードを上から下まで一行ずつ読み、自分の設定が何をしているのかを理解し、ニーズに合わせて修正できるようにすることにあります。一度それができれば、自分専用のNeovimにするために、自由に探索・設定・いじくり回すことができます！ しばらくはKickstartをそのまま使い続けるのも、すぐにモジュールごとに分割して整理し直すのも、すべてはあなた次第です。
-  Luaについて全く知らない場合は、ガイドを読むために少し時間を割くことをお勧めします。例えば、10〜15分程度で読めるこちらのガイドがあります：https://learnxinyminutes.com/docs/lua/
-  Luaを少し理解した後は、NeovimがどのようにLuaを統合しているかのリファレンスとして :help lua-guide を活用してください。
-  :help lua-guide
-  (HTML版): https://neovim.io/doc/user/lua-guide.html
-
-  Kickstart ガイド
-  TODO: まず最初にすべきことは、Neovimで :Tutor コマンドを実行することです。
-  
-  もしこの意味がわからない場合は、以下のように入力してください：
-
-  <Esc> キー（エスケープキー）を押す
-
-  : を入力
-
-  Tutor と入力
-
-  <Enter> キーを押す
-
-  （すでにNeovimの基本操作を知っている場合は、このステップをスキップして構いません。）
-
-  それが完了したら、この init.lua（Kickstartの設定ファイル）の残りの部分を読み進めながら作業を続けてください。
-
-  次に、:help を実行して、その内容を読んでください。 これにより、組み込みのヘルプドキュメントの読み方、移動方法、検索方法に関する基本情報が含まれたヘルプウィンドウが開きます。
-
-  何かに行き詰まったり混乱したりしたときは、まずここを確認するようにしてください。これはNeovimの素晴らしい機能の一つです。
-
-  特に重要な点として、Kickstartでは <Space>sh というキーマップを用意しています。これはヘルプドキュメントを「**[s]**earch（検索）」するためのもので、何を探せばいいか正確にわからない時に非常に便利です。
-
-  この init.lua の至る所に :help X というコメントを残しています。 これらは、Kickstartで使用されている関連設定、プラグイン、またはNeovimの機能について、より詳細な情報がどこにあるかを示すヒントです。
    NOTE: Look for lines like this
 
     Throughout the file. These are for you, the reader, to help you understand what is happening.
@@ -124,7 +90,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -135,7 +101,7 @@ vim.g.have_nerd_font = false
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -164,7 +130,9 @@ vim.schedule(function()
 end)
 
 -- Enable break indent
+-- Avoid braaking lines in the middle of a word
 vim.o.breakindent = true
+vim.opt.linebreak = true
 
 -- Save undo history
 vim.o.undofile = true

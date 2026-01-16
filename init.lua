@@ -69,7 +69,40 @@ Kickstart Guide:
   I have left several `:help X` comments throughout the init.lua
     These are hints about where to find more information about the relevant settings,
     plugins or Neovim features used in Kickstart.
+  日本語
+  Kickstartとは何か？
+  Kickstart.nvimは「配布版（ディストリビューション）」ではありません。
 
+  Kickstart.nvimは、あなた自身の設定を作るための出発点です。 その目的は、コードを上から下まで一行ずつ読み、自分の設定が何をしているのかを理解し、ニーズに合わせて修正できるようにすることにあります。一度それができれば、自分専用のNeovimにするために、自由に探索・設定・いじくり回すことができます！ しばらくはKickstartをそのまま使い続けるのも、すぐにモジュールごとに分割して整理し直すのも、すべてはあなた次第です。
+  Luaについて全く知らない場合は、ガイドを読むために少し時間を割くことをお勧めします。例えば、10〜15分程度で読めるこちらのガイドがあります：https://learnxinyminutes.com/docs/lua/
+  Luaを少し理解した後は、NeovimがどのようにLuaを統合しているかのリファレンスとして :help lua-guide を活用してください。
+  :help lua-guide
+  (HTML版): https://neovim.io/doc/user/lua-guide.html
+
+  Kickstart ガイド
+  TODO: まず最初にすべきことは、Neovimで :Tutor コマンドを実行することです。
+  
+  もしこの意味がわからない場合は、以下のように入力してください：
+
+  <Esc> キー（エスケープキー）を押す
+
+  : を入力
+
+  Tutor と入力
+
+  <Enter> キーを押す
+
+  （すでにNeovimの基本操作を知っている場合は、このステップをスキップして構いません。）
+
+  それが完了したら、この init.lua（Kickstartの設定ファイル）の残りの部分を読み進めながら作業を続けてください。
+
+  次に、:help を実行して、その内容を読んでください。 これにより、組み込みのヘルプドキュメントの読み方、移動方法、検索方法に関する基本情報が含まれたヘルプウィンドウが開きます。
+
+  何かに行き詰まったり混乱したりしたときは、まずここを確認するようにしてください。これはNeovimの素晴らしい機能の一つです。
+
+  特に重要な点として、Kickstartでは <Space>sh というキーマップを用意しています。これはヘルプドキュメントを「**[s]**earch（検索）」するためのもので、何を探せばいいか正確にわからない時に非常に便利です。
+
+  この init.lua の至る所に :help X というコメントを残しています。 これらは、Kickstartで使用されている関連設定、プラグイン、またはNeovimの機能について、より詳細な情報がどこにあるかを示すヒントです。
    NOTE: Look for lines like this
 
     Throughout the file. These are for you, the reader, to help you understand what is happening.
@@ -115,6 +148,18 @@ vim.o.showmode = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
+  vim.g.clipboard = {
+    name = 'win32yank-wsl',
+    copy = {
+      ['+'] = 'win32yank.exe -i --crlf',
+      ['*'] = 'win32yank.exe -i --crlf',
+    },
+    paste = {
+      ['+'] = 'win32yank.exe -o --lf',
+      ['*'] = 'win32yank.exe -o --lf',
+    },
+    cache_enabled = true, -- これが重要
+  }
   vim.o.clipboard = 'unnamedplus'
 end)
 
@@ -941,7 +986,7 @@ require('lazy').setup({
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs', -- Sets main module to use for opts
+    -- main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
       ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },

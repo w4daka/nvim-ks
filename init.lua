@@ -1052,6 +1052,8 @@ require('lazy').setup({
 
       require('mini.pairs').setup()
 
+      require('mini.indentscope').setup()
+
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
@@ -1068,10 +1070,16 @@ require('lazy').setup({
       end
 
       -- ... and there is more!
-      require('mini.git').setup()
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
+  {
+    -- add denops
+    'vim-denops/denops.vim',
+    lazy = false,
+    priority = 1000,
+  },
+
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
@@ -1118,7 +1126,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!

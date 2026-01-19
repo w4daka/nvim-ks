@@ -1,4 +1,5 @@
 return {
+  -- 参考 https://zenn.dev/kkc/articles/tk-nvim-skkeleton-setting2
   { 'vim-denops/denops.vim', lazy = false },
   { 'Shougo/ddc.vim' },
   { 'Shougo/pum.vim' },

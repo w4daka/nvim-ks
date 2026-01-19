@@ -1036,54 +1036,6 @@ require('lazy').setup({
     end,
   },
 
-  { -- Collection of various small independent plugins/modules
-    'echasnovski/mini.nvim',
-    version = false, -- 'false' (文字列) ではなく false (ブール値)
-    config = function()
-      -- 1. mini.starter の設定
-      local starter = require 'mini.starter'
-      starter.setup {
-        header = [[
-      ███╗   ██╗██╗   ██╗███████╗██╗██████╗ ███████╗
-      ████╗  ██║██║   ██║██╔════╝██║██╔══██╗██╔════╝
-      ██╔██╗ ██║██║   ██║█████╗  ██║██████╔╝█████╗  
-      ██║╚██╗██║╚██╗ ██╔╝██╔══╝  ██║██╔══██╗██╔══╝  
-      ██║ ╚████║ ╚████╔╝ ██║     ██║██║  ██║███████╗
-      ╚═╝  ╚═══╝  ╚═══╝  ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝
-        ]],
-        items = {
-          starter.sections.recent_files(5, false),
-          starter.sections.builtin_actions(),
-        },
-        content_hooks = {
-          function(content)
-            for _, unit in ipairs(content) do
-              if unit.section == 'header' then
-                unit.hl = 'Title'
-              end
-            end
-            return content
-          end,
-          starter.gen_hook.adding_bullet(),
-          starter.gen_hook.aligning('center', 'center'),
-        },
-      }
-
-      -- 2. その他の mini モジュールの設定
-      require('mini.ai').setup { n_lines = 500 }
-      require('mini.surround').setup()
-      require('mini.pairs').setup()
-      require('mini.indentscope').setup()
-
-      local statusline = require 'mini.statusline'
-      statusline.setup { use_icons = vim.g.have_nerd_font }
-      ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_location = function()
-        return '%2l:%-2v'
-      end
-    end, -- ここで config 関数を閉じる
-  },
-  -- ここでプラグインのテーブルを閉じる {
   {
     -- add denops
 

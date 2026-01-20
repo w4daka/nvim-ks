@@ -1462,7 +1462,7 @@ return {
 }
 ```
 
-`dial.nvim`整数と16進数と日付を`<c-a>` `<c-x>`で変えられる。true,falseはできない.
+`dial.nvim`整数と16進数と日付を`<c-a>` `<c-x>`で変えられる。true,falseはできない.追記できるようになった。
 
 ```lua
 return {

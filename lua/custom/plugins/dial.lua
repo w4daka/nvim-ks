@@ -20,7 +20,7 @@ return {
   },
   config = function()
     local augend = require 'dial.augend'
-    require('dial.config').augends:setup {
+    require('dial.config').augends:register_group {
       default = {
         augend.integer.alias.decimal, -- 普通の整数
         augend.integer.alias.hex, -- 16進数

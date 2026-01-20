@@ -21,6 +21,10 @@ return {
     },
     config = function()
       vim.fn['skkeleton#azik#add_table'] 'us'
+      vim.fn['skkeleton#register_kanatable']('azik', {
+        q = 'katakana',
+      })
+
       vim.fn['skkeleton#config'] {
         kanaTable = 'azik',
         globalDictionaries = {

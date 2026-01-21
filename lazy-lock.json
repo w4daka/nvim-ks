@@ -24,6 +24,7 @@
   "mini.nvim": { "branch": "main", "commit": "4f53281c51ad9384ef790178b9643740fa763979" },
   "mini.tabline": { "branch": "main", "commit": "caf23615b9b99bacc79ecd60f61c4e6a8ec18c84" },
   "neoterm": { "branch": "master", "commit": "eca22dc90a9db5e52d8baf91f31991ad540ffe36" },
+  "none-ls.nvim": { "branch": "main", "commit": "3c206dfedf5f1385e9d29f85ffaec7874358592a" },
   "nvim-lspconfig": { "branch": "master", "commit": "92ee7d42320edfbb81f3cad851314ab197fa324a" },
   "nvim-treesitter": { "branch": "main", "commit": "e75c007f2747050c2c620dc862c77b8f242551a8" },
   "nvim-web-devicons": { "branch": "master", "commit": "803353450c374192393f5387b6a0176d0972b848" },

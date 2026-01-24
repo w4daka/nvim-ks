@@ -235,6 +235,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.hl.on_yank()
   end,
 })
+-- vim.opt.runtimepath:append '~/denops-getting-started'
 
 -- Open init.lua(kickstart) by :Initlua
 vim.api.nvim_create_user_command('InitLua', function()
